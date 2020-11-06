@@ -1,0 +1,5 @@
+functions:
+  stackatto:
+    requirements: ./requirements.txt
+    include:
+      - ./api/

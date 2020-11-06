@@ -1,0 +1,20 @@
+# The set of dependencies that are required by a developer
+# while working on the redwood project. These are local
+# dependencies. Not the dependencies of the lambda functions.
+
+awscli==1.18.127
+ipdb==0.11
+coverage==5.2.1
+pytest==6.0.1
+pytest-cov==2.10.1
+pytest-html==2.1.1
+pytest-metadata==1.10.0
+pytest-mock==3.2.0
+pytest-pythonpath==0.7.3
+behave==1.2.6
+sentry-sdk==0.16.5
+black==19.10b0
+boto3==1.14.50
+
+minik==0.5.4
+juniper==0.5.4
