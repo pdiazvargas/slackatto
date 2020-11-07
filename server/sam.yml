@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: API Gateway with Lambda Token Authorizer
+Resources:
+  EventsAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      EndpointConfiguration: REGIONAL
+      StageName: Prod
+
+  HandlerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: python3.6
+      Handler: api.lambda_handler.app
+      CodeUri: ./dist/stackatto.zip
+      Role: !GetAtt LambdaRole.Arn
+      Events:
+        PostEvents:
+          Type: Api
+          Properties:
+            RestApiId: !Ref EventsAPI
+            Path: /events
+            Method: post
+        GetUsers:
+          Type: Api
+          Properties:
+            RestApiId: !Ref EventsAPI
+            Path: /users
+            Method: get
+
+  LambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Sid: ""
+        Version: "2012-10-17"
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AWSLambdaFullAccess
+        - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+
+Outputs:
+  ApiURL:
+    Description: "API URL"
+    Value: !Sub "https://${EventsAPI}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
