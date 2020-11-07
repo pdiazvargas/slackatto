@@ -22,6 +22,12 @@ Resources:
             RestApiId: !Ref EventsAPI
             Path: /events
             Method: post
+        GetUsers:
+          Type: Api
+          Properties:
+            RestApiId: !Ref EventsAPI
+            Path: /users
+            Method: get
 
   LambdaRole:
     Type: AWS::IAM::Role
