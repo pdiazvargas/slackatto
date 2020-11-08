@@ -24,6 +24,11 @@
                     <label>phone</label>
                     <span class="h6 text-muted pl-2">{{user.profile.phone || "N/a"}}</span>
                 </div>
+                <div>
+                    <badge v-if="user.is_admin" type="primary" rounded>admin</badge>
+                    <badge v-if="user.is_owner" type="primary" rounded>owner</badge>
+                    <badge v-if="!user.is_bot" type="primary" rounded>not a bot</badge>
+                </div>
             </div>
         </div>
     </card>
