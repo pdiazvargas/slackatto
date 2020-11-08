@@ -10,8 +10,8 @@
                     :style="avatarStyle">
             </div>
             <div class="pl-4">
-                <h5 class="title text-success">{{user.real_name}}</h5>
-                <small class="title text-success">{{user.profile.status_text || "No status available"}}</small>
+                <h5 class="title">{{user.real_name}}</h5>
+                <small>{{user.profile.status_text || "No status available"}}</small>
                 <div>
                     <label>username</label>
                     <span class="h6 text-muted pl-2">{{user.profile.display_name || "N/a"}}</span>
