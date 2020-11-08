@@ -16,3 +16,8 @@ The persistance store selected for this project is the no-sql db dynamo. The mai
 Last but most definitely not least! This project uses two projects dear to my heart: juniper and minik. Juniper is an open source project I built and now maintain and it is used to build lambda functions. You can see where and how it is used in the `Makefile`. Minik is a micro web framework I developed and also maintain. This project came to life as a way to build a no batteries included web framework. A minimalist mentality was used when developing that project and right now it is used in production by the EAB.
 
 The server portion of this project can be used as a small blueprint on how to build a serverless project from scratch.
+
+## Resources
+
+https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-serve-static-website/
+https://docs.aws.amazon.com/AmazonS3/latest/dev/HostingWebsiteOnS3Setup.html#step3-add-bucket-policy-make-content-public
