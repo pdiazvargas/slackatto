@@ -16,9 +16,7 @@
 
 <script>
 import axios from 'axios'
-
 import UserCard from "@/components/UserCard";
-// import SampleUsers from "@/sample/users";
 
 export default {
   components: {

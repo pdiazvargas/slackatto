@@ -4,10 +4,10 @@
             <div>
                 <img
                     class="rounded-circle img-center img-fluid img-outline"
-                    :data-src="user.profile.image_72"
-                    :src="user.profile.image_72"
+                    :data-src="user.profile.image_192"
+                    :src="user.profile.image_192"
                     lazy="loaded"
-                    style="width: 72px">
+                    style="width: 100px">
             </div>
             <div class="pl-4">
                 <h5 class="title text-success">{{user.real_name}}</h5>
