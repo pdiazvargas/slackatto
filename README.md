@@ -2,7 +2,7 @@
 
 This is a sample repository used to integrate and explore the slack events API. The main purpose of this experiment is to build a user directory capable of being in sync with changes to a user in a slack workspace. If a user is added to the workspace, our directory should have the ability to show that user in our client. When a user edits his/her profile, that change needs to be captured by our server and the change needs to be displayed in our interface...
 
-To view the [live demo](d3qvcxeu66715v.cloudfront.net)
+To view the [live demo](https://d17fxhq9upr817.cloudfront.net/)
 
 ## Server Architecture
 
@@ -23,4 +23,3 @@ For the client portion, we see a very minimal approach as well. Using vuejs and 
 ## Resources
 
 Hosting using S3 and cloud front [link](https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-serve-static-website/)
-Additional info and further considerations when using S3 as a static host. [link](https://docs.aws.amazon.com/AmazonS3/latest/dev/HostingWebsiteOnS3Setup.html#step3-add-bucket-policy-make-content-public)
