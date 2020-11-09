@@ -1,7 +1,17 @@
 <template>
     <div>
-
-        <section class="section section section-shaped my-0 overflow-hidden">
+        <section class="section section-sm">
+            <div class="container">
+                <div class="row row-grid align-items-center">
+                    <div class="col-md-6 order-md-1">
+                        <div class="pr-md-5">
+                            <h3>Workito Team Directory</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section section-sm my-0 overflow-hidden">
             <div class="container py-0">
                 <div class="row row-grid align-items-center">
                     <div class="col-lg-8">
@@ -10,7 +20,6 @@
                 </div>
             </div>
         </section>
-
     </div>
 </template>
 
