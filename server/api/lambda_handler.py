@@ -1,6 +1,7 @@
 import logging
 
-from minik.core import Minik
+from minik.core import Minik, BadRequestError
+
 from api import dynamo
 
 logger = logging.getLogger()
@@ -40,7 +41,7 @@ def no_op(payload):
     """
     The base case in which the given request type is not valid.
     """
-    return {"error": "Invalid request type received."}
+    raise BadRequestError(f"Invalid request type.")
 
 
 def return_challenge(payload):
@@ -48,6 +49,11 @@ def return_challenge(payload):
     If the type of event is the slack challenge, return the value sent
     by their API. This response will complete the validation.
     """
+    if "challenge" not in payload:
+        raise BadRequestError(
+            "Challenge me!! Received a verification request with a challenge."
+        )
+
     return payload["challenge"]
 
 
@@ -58,12 +64,25 @@ def user_change_handler(payload):
     of the user to the slack workspace or the removal/deactivate of a
     user from the workspace.
     """
-    user = payload["event"]["user"]
+    user = _validate_user_change(payload)
 
     if user.get("deleted", False):
         dynamo.remove_user(user)
     else:
         dynamo.add_or_update_user(user)
+
+
+def _validate_user_change(payload):
+    """
+    A small validator to keep track of the business logic associated
+    with a user_change event.
+    """
+    user = payload["event"].get("user")
+    if not user:
+        raise BadRequestError("Unable to track user.")
+    if not user.get("id"):
+        raise BadRequestError("Invalid user! The given user does not have an id.")
+    return user
 
 
 # Keep track of the type of events supported and their respective handler.
